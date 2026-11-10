@@ -1,5 +1,6 @@
 #include "PluginProcessor.h"
 #include "PluginEditor.h"
+#include "ScaledEditor.h"
 
 namespace
 {
@@ -317,7 +318,7 @@ void ReferenzAudioProcessor::setStateInformation (const void* data, int sizeInBy
     }
 }
 
-juce::AudioProcessorEditor* ReferenzAudioProcessor::createEditor() { return new ReferenzAudioProcessorEditor (*this); }
+juce::AudioProcessorEditor* ReferenzAudioProcessor::createEditor() { return new kb::ScaledEditor (*this, new ReferenzAudioProcessorEditor (*this)); }
 
 #ifndef KB_EMBEDDED
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter() { return new ReferenzAudioProcessor(); }
